@@ -21,10 +21,16 @@ public class NotificationManager {
 		notifications = new ArrayList<Notification>();
 	}
 
+	public void add(Notification n) {
+		n.setOrder(notifications.size());
+		n.setScreenWidth(screenWidth);
+		notifications.add(n);
+	}
+	
 	public void add(String text) {
 		add(text, Color.white);
 	}
-
+	
 	public void add(String text, Color color) {
 		Notification e = new Notification(text, notifications.size(), color,
 				screenWidth, font);

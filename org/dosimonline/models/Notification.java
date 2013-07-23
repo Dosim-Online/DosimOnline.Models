@@ -26,7 +26,7 @@ public final class Notification {
 	int dismissDelay;
 	int pullOutDelay;
 
-	Notification(String text, int order, Color color, int screenWidth, TrueTypeFont f) {
+	public Notification(String text, int order, Color color, int screenWidth, TrueTypeFont f) {
 		this.text = text;
 		this.color = new Color(color);
 		this.font = f;
@@ -34,7 +34,7 @@ public final class Notification {
 		this.height = font.getHeight(text);
 		setOrder(order);
 		this.y = desiredY;
-		this.x = screenWidth - (width + PADDING);
+		this.setScreenWidth(screenWidth);
 		this.dismissDelay = 5000;
 		this.pullOutDelay = 500;
 	}
@@ -62,6 +62,10 @@ public final class Notification {
 
 	public void render(Graphics g) {
 		font.drawString(x, y, text, color);
+	}
+
+	void setScreenWidth(int screenWidth) {
+		this.x = screenWidth - (width + PADDING);
 	}
 
 }
